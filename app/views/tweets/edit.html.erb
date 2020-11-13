@@ -1,3 +1,16 @@
 <h1>Edit your tweet</h1>
 
+
+<% if @tweet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being edited:</h2>
+ 
+    <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= render "form", tweet: @tweet %>
