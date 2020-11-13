@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
     def index 
+        @tweet = Tweet.new
         @tweets = Tweet.all
     end 
 

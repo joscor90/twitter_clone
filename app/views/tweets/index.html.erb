@@ -1,5 +1,11 @@
-<h1> Latest Tweets!</h1>
+<h1>Welcome <%= current_user ? current_user.name : "stranger" %></h1>
+<p>This is my Twitter clone </p>
 
+<h3>Wanna tweet something?</h3>
+
+<%= render 'form', tweet: @tweet %>
+
+<h3>Latest tweets</h3>
 <table>
     <thead>
         <tr>
