@@ -29,8 +29,8 @@ class TweetsController < ApplicationController
     end
 
     def update
-        if @post.update(post_params)
-            redirect_to @post, notice: 'Your tweet was successfully updated.'
+        if @tweet.update(tweet_params)
+            redirect_to @tweet, notice: 'Your tweet was successfully updated.'
         else  
             render edit_tweet_path, notice: "Your tweet couldn't be updated"
         end
