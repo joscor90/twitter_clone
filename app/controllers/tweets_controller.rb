@@ -11,7 +11,11 @@ class TweetsController < ApplicationController
     def create 
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
-        @tweet.save!
+        if @tweet.save
+            redirect_to :index, notice: 'Tweet was created successfully'
+        else 
+            render :new 
+        end
     end 
 
     def show 
