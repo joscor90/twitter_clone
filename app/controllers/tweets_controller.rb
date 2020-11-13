@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
     def index 
         @tweet = Tweet.new
@@ -21,7 +22,7 @@ class TweetsController < ApplicationController
     end 
 
     def show 
-        @tweet = Tweet.find(params[:id])
+        
     end 
 
     def edit 
@@ -34,7 +35,9 @@ class TweetsController < ApplicationController
     end
 
     private 
-
+    def set_tweet 
+        @tweet = Tweet.find(params[:id])
+    end
     def tweet_params 
         params.require(:tweet).permit(:content, :user_id)
     end
