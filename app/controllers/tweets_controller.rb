@@ -28,7 +28,12 @@ class TweetsController < ApplicationController
     def edit 
     end
 
-    def update  
+    def update
+        if @post.update(post_params)
+            redirect_to @post, notice: 'Your tweet was successfully updated.'
+        else  
+            render edit_tweet_path, notice: "Your tweet couldn't be updated"
+        end
     end 
 
     def destroy 
@@ -40,7 +45,7 @@ class TweetsController < ApplicationController
     def set_tweet 
         @tweet = Tweet.find(params[:id])
     end
-    
+
     def tweet_params 
         params.require(:tweet).permit(:content, :user_id)
     end
