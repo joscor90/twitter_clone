@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
-            redirect_to :index, notice: 'Tweet was created successfully'
+            redirect_to tweets_path, notice: 'Tweet was created successfully'
         else 
             render :new 
         end
