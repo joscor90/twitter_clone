@@ -9,6 +9,9 @@ class TweetsController < ApplicationController
     end 
 
     def create 
+        @tweet = Tweet.create(tweet_params)
+        @tweet.user_id = current_user.id
+        @tweet.save!
     end 
 
     def show 
@@ -22,4 +25,5 @@ class TweetsController < ApplicationController
 
     def destroy 
     end
+
 end
