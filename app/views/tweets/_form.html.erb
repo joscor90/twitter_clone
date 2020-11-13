@@ -1,0 +1,12 @@
+<%= form_with(model: tweet, local: true) do |ff| %>
+
+    <div>
+        <%= ff.label :content %>
+        <%= ff.text_area :content %>
+    </div>
+
+    <div>
+        <%= ff.submit %>
+    </div>
+
+<% end %>
