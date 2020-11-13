@@ -1,0 +1,18 @@
+<h1> Latest Tweets!</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @tweets.each do |t| %>
+        <tr>
+            <td><%= t.content %></td>
+            <td><%= t.user %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
