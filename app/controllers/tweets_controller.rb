@@ -40,6 +40,7 @@ class TweetsController < ApplicationController
     def set_tweet 
         @tweet = Tweet.find(params[:id])
     end
+    
     def tweet_params 
         params.require(:tweet).permit(:content, :user_id)
     end
