@@ -32,7 +32,7 @@ class TweetsController < ApplicationController
         if @tweet.update(tweet_params)
             redirect_to @tweet, notice: 'Your tweet was successfully updated.'
         else  
-            render edit_tweet_path, notice: "Your tweet couldn't be updated"
+            render :edit, notice: "Your tweet couldn't be updated"
         end
     end 
 
