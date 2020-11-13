@@ -23,6 +23,10 @@
             <td><%= t.content %></td>
             <td><%= t.user %></td>
             <td><%= link_to t.created_at,tweet_path(t) %></td>
+            <% if current_user && current_user.id == t.user_id %>
+                <td><%= link_to 'Edit', edit_tweet_path(t) %></td>
+                <td><%= link_to 'Delete', tweets_path(t), method: :delete, data: {confirm: 'Are you sure you want to delete your tweet?'}%></td>
+            <% end %>
         </tr>
     <% end %>
     </tbody>
