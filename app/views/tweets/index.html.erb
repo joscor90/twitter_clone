@@ -1,9 +1,11 @@
 <h1>Welcome <%= current_user ? current_user.name : "stranger" %></h1>
 <p>This is my Twitter clone </p>
 
-<h3>Wanna tweet something?</h3>
+<% if user_signed_in? %>
+    <h3>Wanna tweet something?</h3>
 
-<%= render 'form', tweet: @tweet %>
+    <%= render 'form', tweet: @tweet %>
+<% end %>
 
 <h3>Latest tweets</h3>
 <table>
@@ -11,6 +13,8 @@
         <tr>
             <th>Author</th>
             <th>Content</th>
+            <th>Tweeted At</th>
+            <th colspan='3'></th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +22,7 @@
         <tr>
             <td><%= t.content %></td>
             <td><%= t.user %></td>
+            <td><%= link_to t.created_at,tweet_path(t) %></td>
         </tr>
     <% end %>
     </tbody>
