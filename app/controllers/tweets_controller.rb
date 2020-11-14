@@ -53,4 +53,8 @@ class TweetsController < ApplicationController
         params.require(:tweet).permit(:content, :user_id)
     end
 
+    def retweet_params 
+        params.require(:retweet).permit(:user_id, :retweet_id)
+    end
+
 end
