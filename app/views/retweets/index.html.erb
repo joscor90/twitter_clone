@@ -1,21 +1,20 @@
-<h1>Retweeted by:</h1>
-
 <table>
     <thead>
         <tr>
             <th>
-                User Name
+                Author
             </th>
-        
         </tr>
     </thead>
     <tbody>
         <% @retweets.each do |rt| %>
             <tr>
                 <td>
-                    <%= rt.user %>
+                    <p><%= rt.user.name %> has retweeted this</p>
                 </td>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<%= link_to 'Back to Home', root_path %>

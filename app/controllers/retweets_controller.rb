@@ -1,5 +1,5 @@
 class RetweetsController < ApplicationController
     def index 
-        @retweets = Retweet.find(params[:id])
+        @retweets = Retweet.all.where(tweet_id: params[:id])
     end 
 end
