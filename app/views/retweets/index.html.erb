@@ -1,0 +1,21 @@
+<h1>Retweeted by:</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                User Name
+            </th>
+        
+        </tr>
+    </thead>
+    <tbody>
+        <% @retweets.each do |rt| %>
+            <tr>
+                <td>
+                    <%= rt.user %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
