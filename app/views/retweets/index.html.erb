@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>
-                Author
+                User
             </th>
         </tr>
     </thead>
@@ -10,7 +10,7 @@
         <% @retweets.each do |rt| %>
             <tr>
                 <td>
-                    <p><%= rt.user.name %> has retweeted this</p>
+                    <p><%= rt.user %> has retweeted this</p>
                 </td>
             </tr>
         <% end %>
