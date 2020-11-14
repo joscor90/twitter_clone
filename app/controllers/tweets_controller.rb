@@ -11,6 +11,9 @@ class TweetsController < ApplicationController
         @tweet = Tweet.new
     end 
 
+    def retweet 
+    end 
+
     def create 
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
