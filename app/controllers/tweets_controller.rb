@@ -7,10 +7,9 @@ class TweetsController < ApplicationController
         @tweets = Tweet.all
     end 
 
-    def new 
-        @retweet ||= Retweet.new(user_id: current_user.id, tweet_id: params[:id])
+    def new
+        @retweet = Retweet.new(user_id: current_user.id, tweet_id: params[:format])
         @tweet = Tweet.new
-        byebug
     end 
 
     def retweet 
