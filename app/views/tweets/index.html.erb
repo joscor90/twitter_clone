@@ -14,7 +14,7 @@
             <th>Content</th>
             <th>Author</th>
             <th>Tweeted At</th>
-            <th>Retweet</th>
+            <th>Retweets</th>
             <th colspan='4'></th>
         </tr>
     </thead>
@@ -24,6 +24,7 @@
             <td><%= tweet.content %></td>
             <td><%= tweet.user %></td>
             <td><%= link_to tweet.created_at, tweet_path(tweet) %></td>
+            <td><%= tweet.retweets.count %></td>
             <% if user_signed_in? %>
                 <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
             <% end %>

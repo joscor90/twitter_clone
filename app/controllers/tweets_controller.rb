@@ -21,6 +21,7 @@ class TweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
+            byebug
             if params[:retweet] 
                 @retweet = Retweet.create(user_id: @tweet.user_id, tweet_id: @tweet.id)
                 @retweet.save!
