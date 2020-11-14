@@ -14,6 +14,7 @@
             <th>Content</th>
             <th>Author</th>
             <th>Tweeted At</th>
+            <th>Retweet</th>
             <th colspan='4'></th>
         </tr>
     </thead>
@@ -23,6 +24,9 @@
             <td><%= tweet.content %></td>
             <td><%= tweet.user %></td>
             <td><%= link_to tweet.created_at, tweet_path(tweet) %></td>
+            <% if user_signed_in? %>
+                <td><%= link_to 'Retweet', new_tweet_path %></td>
+            <% end %>
             <% if current_user && current_user.id == tweet.user_id %>
                 <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
                 <td><%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }%></td>
