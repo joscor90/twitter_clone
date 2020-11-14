@@ -8,9 +8,10 @@ class TweetsController < ApplicationController
     end 
 
     def new
-        @retweet ||= Retweet.new(user_id: current_user.id, tweet_id: params[:format])
         @tweet = Tweet.new
-        @content = Tweet.find(@retweet.tweet_id).content
+        ref_tweet = Tweet.find(params[:format])
+        @content = ref_tweet.content
+        @tweet_id = ref_tweet.id
     end 
 
     def retweet 
@@ -21,14 +22,9 @@ class TweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
-            byebug
-            if params[:retweet] 
-                @retweet = Retweet.create(user_id: @tweet.user_id, tweet_id: @tweet.id)
-                @retweet.save!
-                redirect_to tweets_path, notice: 'Tweet was created successfully'
-            else 
-                redirect_to tweets_path, notice: 'Tweet was created successfully'
-            end
+            @retweet ||= Retweet.create(retweet_params)
+            @retweet.save if @retweet.present?
+            redirect_to tweets_path, notice: 'Tweet was created successfully'
         else 
             render :new 
         end
@@ -63,8 +59,7 @@ class TweetsController < ApplicationController
         params.require(:tweet).permit(:content, :user_id)
     end
 
-    def retweet_params
-        params.require(:retweet).permit(:id)
+    def retweet_params 
+        params.require(:tweet).permit(:user_id, :tweet_id)
     end
-
 end
