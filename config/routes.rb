@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'tweets#index'
   resources :tweets
 
-  get 'retweet/:tweet_id/:reuser_id', to: 'tweets#retweet', as: 'retweet'
+  get 'tweets/:id', to: 'tweets#retweet', as: 'retweet'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

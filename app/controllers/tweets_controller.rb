@@ -8,10 +8,13 @@ class TweetsController < ApplicationController
     end 
 
     def new 
+        @retweet ||= Retweet.new(user_id: current_user.id, tweet_id: params[:id])
         @tweet = Tweet.new
+        byebug
     end 
 
     def retweet 
+        redirect_to new_tweet_path(params[:id])
     end 
 
     def create 
@@ -53,8 +56,8 @@ class TweetsController < ApplicationController
         params.require(:tweet).permit(:content, :user_id)
     end
 
-    def retweet_params 
-        params.require(:retweet).permit(:user_id, :retweet_id)
+    def retweet_params
+        params.require(:retweet).permit(:id)
     end
 
 end
