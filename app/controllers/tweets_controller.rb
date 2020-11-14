@@ -8,8 +8,9 @@ class TweetsController < ApplicationController
     end 
 
     def new
-        @retweet = Retweet.new(user_id: current_user.id, tweet_id: params[:format])
+        @retweet ||= Retweet.new(user_id: current_user.id, tweet_id: params[:format])
         @tweet = Tweet.new
+        @content = Tweet.find(@retweet.tweet_id).content
     end 
 
     def retweet 
@@ -20,7 +21,13 @@ class TweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
-            redirect_to tweets_path, notice: 'Tweet was created successfully'
+            if params[:retweet] 
+                @retweet = Retweet.create(user_id: @tweet.user_id, tweet_id: @tweet.id)
+                @retweet.save!
+                redirect_to tweets_path, notice: 'Tweet was created successfully'
+            else 
+                redirect_to tweets_path, notice: 'Tweet was created successfully'
+            end
         else 
             render :new 
         end

@@ -1,12 +1,32 @@
-<%= form_with(model: tweet, local: true) do |ff| %>
+<% if @content %>
+    <%= form_with(model: tweet, local: true) do |ff| %>
 
-    <div>
-        <%= ff.label :content %>
-        <%= ff.text_area :content %>
-    </div>
+        <div>
+            <%= ff.label :content %>
+            <%= ff.text_area :content, value: @content %>
+        </div>
 
-    <div>
-        <%= ff.submit %>
-    </div>
+        <div>
+            <%= ff.hidden_field :retweet, value: true %>
+        </div>
 
+        <div>
+            <%= ff.submit %>
+        </div>
+
+    <% end %>
+
+<% else %>
+    <%= form_with(model: tweet, local: true) do |ff| %>
+
+        <div>
+            <%= ff.label :content %>
+            <%= ff.text_area :content %>
+        </div>
+
+        <div>
+            <%= ff.submit %>
+        </div>
+
+    <% end %>
 <% end %>
