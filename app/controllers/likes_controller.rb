@@ -8,7 +8,8 @@ class LikesController < ApplicationController
             render root_path, notice: "Couldn't give a like"
         end
     end
-
+    
+    private
     def like_params
         params.require(:like).permit(:id)
     end

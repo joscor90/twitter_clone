@@ -15,6 +15,7 @@
             <th>Author</th>
             <th>Tweeted At</th>
             <th>Retweets</th>
+            <th>Likes</th>
             <th colspan='4'></th>
         </tr>
     </thead>
@@ -25,8 +26,10 @@
             <td><%= tweet.user %></td>
             <td><%= link_to tweet.created_at, tweet_path(tweet) %></td>
             <td><%= link_to tweet.retweets.count, retweets_path(tweet) %></td>
+            <td><%= link_to tweet.likes.count %></td>
             <% if user_signed_in? %>
                 <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
+                <td><%= link_to 'Like', create_like_path(tweet) %></td>
             <% end %>
             <% if current_user && current_user.id == tweet.user_id %>
                 <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
