@@ -28,9 +28,12 @@
             <td><%= link_to tweet.retweets.count, retweets_path(tweet) %></td>
             <td><%= tweet.likes.count %></td>
             <% if user_signed_in? %>
-                    <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
-                    <td><%= link_to 'Like', create_like_path(tweet), method: :post %></td>
+                <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
+                <%if tweet.likes.include?(Like.find_by(user_id: current_user.id)) %>
                     <td><%= link_to 'Unlike', destroy_like_path(tweet), method: :delete %></td>
+                <% else %>
+                    <td><%= link_to 'Like', create_like_path(tweet), method: :post %></td>
+                <% end %>
             <% end %>
             <% if current_user && current_user.id == tweet.user_id %>
                 <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
