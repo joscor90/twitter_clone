@@ -1,4 +1,8 @@
 class LikesController < ApplicationController
+    
+    def index 
+        @likes = Like.where("tweet:id = ?, params[:id]")
+    end
     def create 
         @like = Like.create(tweet_id: params[:id])
         @like.user_id = current_user.id 

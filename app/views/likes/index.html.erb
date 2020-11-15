@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <tr>
+            <th>
+                Autor
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @likes.each do |l| %>
+        <tr>
+            <td>
+                <% l.user %>
+            </td>
+        </tr>
+    </tbody>
+</table>

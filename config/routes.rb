@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'tweets#index'
   resources :tweets
 
+  get 'likes/:id', to: 'likes#index', as: 'likes'
   delete 'destroy/:id', to: 'likes#destroy', as: 'destroy_like'
   get 'like/:id', to: "likes#create", as: "create_like"
   get 'retweets/:id', to: 'retweets#index', as: 'retweets'
