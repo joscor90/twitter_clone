@@ -28,9 +28,9 @@
             <td><%= link_to tweet.retweets.count, retweets_path(tweet) %></td>
             <td><%= link_to tweet.likes.count %></td>
             <% if user_signed_in? %>
-                <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
-                <% if Like.find(user_id: current_user.id, tweet_id: tweet.id) %>
-                <td><%= link_to 'Destroy', create_like_path(tweet) %></td>
+                    <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
+                <% if @likes.include?(Like.find_by(tweet_id: tweet.id)) %>
+                    <td><%= link_to 'Destroy', root_path %></td>
                 <% else %>
                     <td><%= link_to 'Like', create_like_path(tweet) %></td>
                 <% end %>

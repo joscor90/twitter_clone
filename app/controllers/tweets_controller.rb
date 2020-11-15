@@ -5,6 +5,7 @@ class TweetsController < ApplicationController
     def index 
         @tweet = Tweet.new
         @tweets = Tweet.order(:created_at).page(params[:page])
+        @likes ||= Like.where("user_id = ?", current_user.id)
     end 
 
     def new
