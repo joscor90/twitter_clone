@@ -10,8 +10,8 @@ class TweetsController < ApplicationController
     def new
         @tweet = Tweet.new
         ref_tweet ||= Tweet.find(params[:format])
-        @content = ref_tweet.content if @content
-        @tweet_id = ref_tweet.id if @tweet_id
+        @content = ref_tweet.content
+        @tweet_id = ref_tweet.id
     end 
 
     def retweet 
