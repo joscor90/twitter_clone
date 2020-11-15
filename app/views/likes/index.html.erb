@@ -10,8 +10,9 @@
         <% @likes.each do |l| %>
         <tr>
             <td>
-                <% l.user %>
+                <p><strong><%= l.user %></strong> likes this</p>
             </td>
         </tr>
+        <% end %>
     </tbody>
 </table>
