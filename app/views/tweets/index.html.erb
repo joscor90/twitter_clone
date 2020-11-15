@@ -30,7 +30,7 @@
             <% if user_signed_in? %>
                     <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
                 <% if @likes.include?(Like.find_by(tweet_id: tweet.id)) %>
-                    <td><%= link_to 'Destroy', root_path %></td>
+                    <td><%= link_to 'Unlike', destroy_like_path(tweet), method: :delete %></td>
                 <% else %>
                     <td><%= link_to 'Like', create_like_path(tweet) %></td>
                 <% end %>
