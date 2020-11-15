@@ -15,7 +15,7 @@ class LikesController < ApplicationController
 
     def destroy 
         @like = Like.find_by(user_id: current_user.id, tweet_id: params[:id])
-        @like.destroy
+        @like.destroy if @like
         redirect_to root_path
     end
 end

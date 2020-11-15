@@ -5,14 +5,13 @@ class TweetsController < ApplicationController
     def index 
         @tweet = Tweet.new
         @tweets = Tweet.order(:created_at).page(params[:page])
-        @likes ||= Like.where("user_id = ?", current_user.id)
     end 
 
     def new
         @tweet = Tweet.new
         ref_tweet ||= Tweet.find(params[:format])
-        @content = ref_tweet.content
-        @tweet_id = ref_tweet.id
+        @content = ref_tweet.content if @content
+        @tweet_id = ref_tweet.id if @tweet_id
     end 
 
     def retweet 
