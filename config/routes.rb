@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   delete 'destroy/:id', to: 'likes#destroy', as: 'destroy_like'
   post 'like/:id', to: "likes#create", as: "create_like"
   get 'retweets/:id', to: 'retweets#index', as: 'retweets'
-  get 'retweet/:id', to: 'tweets#retweet', as: 'retweet'
+  get 'retweet/:id', to: 'retweets#new', as: 'retweet'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
