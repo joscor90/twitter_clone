@@ -24,7 +24,7 @@
         <tr>
             <td><%= tweet.content %></td>
             <td><%= tweet.user %></td>
-            <td><%= link_to tweet.created_at, tweet_path(tweet) %></td>
+            <td><%= link_to time_ago_in_words(tweet.created_at), tweet_path(tweet) %></td>
             <td><%= link_to tweet.retweets.count, retweets_path(tweet) %></td>
             <td><%= tweet.likes.count %></td>
             <% if user_signed_in? %>
