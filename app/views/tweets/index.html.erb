@@ -6,12 +6,12 @@
 </div>
 
 <% if user_signed_in? %>
-    <div class = "ml-3 w-25">
+    <div class = "container">
         <h3>Share something</h3>
         <%= form_with(model: @tweet, local: true) do |ff| %>
             <div class = "form-group">
                 <div>
-                    <%= ff.text_area :content, class: "form-control" %>
+                    <%= ff.text_area :content, class: "form-control w-50" %>
                 </div>
             </div>
         
@@ -22,8 +22,32 @@
     </div>
 <% end %>
 
-<h3>Latest tweets</h3>
-<table>
+
+<div class = "container">
+    <h3 class= "mb-4">Latest tweets</h3>
+    <% @tweets.each do |tweet| %>
+        <div class="card mb-3" style="width: 20 rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= tweet.user %></h5>
+                <p class="card-text"><%= tweet.content %>.</p>
+                <a href="#" class="card-link"><%= "Likes #{tweet.likes.count}" %></a>
+                <a href="#" class="card-link"><%= "Retweets #{tweet.retweets.count}" %></a>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<% @tweets.each do |tweet| %>
+    <div class="card" style="width: 20 rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%= tweet.user %></h5>
+            <p class="card-text"><%= tweet.content %>.</p>
+            <a href="#" class="card-link"><%= "Likes #{tweet.likes.count}" %></a>
+            <a href="#" class="card-link"><%= "Retweets #{tweet.retweets.count}" %></a>
+        </div>
+    </div>
+<% end %>
+<!-- <table>
     <thead>
         <tr>
             <th>Content</th>
@@ -61,6 +85,6 @@
         </tr>
     <% end %>
     </tbody>
-</table>
+</table> -->
 
 <%= paginate @tweets %>
