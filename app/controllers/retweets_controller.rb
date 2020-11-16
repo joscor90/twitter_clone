@@ -5,8 +5,10 @@ class RetweetsController < ApplicationController
 
     def new 
         ref_tweet = Tweet.find(params[:id].to_i)
-        @content = ref_tweet.content 
         @tweet_id = ref_tweet.id
-        @tweet = Tweet.new
+    end
+
+    def create
+
     end
 end
