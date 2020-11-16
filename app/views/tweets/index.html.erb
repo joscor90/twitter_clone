@@ -1,5 +1,9 @@
-<h1>Welcome <%= current_user ? current_user.name : "stranger" %></h1>
-<p>This is my Twitter clone </p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Welcome <%= current_user ? current_user.name : "stranger" %>!</h1>
+      <p class="lead">This is definetly not a Twitter!.</p>
+    </div>
+</div>
 
 <% if user_signed_in? %>
     <h3>Wanna tweet something?</h3>
