@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Welcome <%= current_user ? current_user.name : "stranger" %>!</h1>
-      <p class="lead">This is definetly not a Twitter!.</p>
+      <p class="lead">This is definetly not Twitter!.</p>
     </div>
 </div>
 
@@ -30,23 +30,11 @@
             <div class="card-body">
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
-                <a href="#" class="card-link"><%= "Likes #{tweet.likes.count}" %></a>
-                <a href="#" class="card-link"><%= "Retweets #{tweet.retweets.count}" %></a>
+                <span class="text-primary"><%= tweet.likes.count %></span>
             </div>
         </div>
     <% end %>
 </div>
-
-<% @tweets.each do |tweet| %>
-    <div class="card" style="width: 20 rem;">
-        <div class="card-body">
-            <h5 class="card-title"><%= tweet.user %></h5>
-            <p class="card-text"><%= tweet.content %>.</p>
-            <a href="#" class="card-link"><%= "Likes #{tweet.likes.count}" %></a>
-            <a href="#" class="card-link"><%= "Retweets #{tweet.retweets.count}" %></a>
-        </div>
-    </div>
-<% end %>
 <!-- <table>
     <thead>
         <tr>
