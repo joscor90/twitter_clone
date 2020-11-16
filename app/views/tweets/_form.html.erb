@@ -1,28 +1,4 @@
-<% if @content %>
-    <div class = "container">
-        <h3>Retweet</h3>
-        <%= form_with(model: tweet, local: true) do |ff| %>
-            <div class = "form-group">
-                <div>
-                    <%= ff.text_area :content, value: @content, class: "form-control w-50" %>
-                </div>
-            </div>
-        
-                <div>
-                    <%= ff.hidden_field :user_id, value: current_user.id %>
-                    <%= ff.hidden_field :tweet_id, value: @tweet_id %>
-                </div>
-        
-                <div>
-                    <%= ff.submit nil, class: "btn btn-primary mt-2 mb-5" %>
-                </div>
-            </div>
-    <% end %>
-
-    </div>
-
-<% else %>
-    <div class = "container">
+<div class = "container">
         <h3>Share something</h3>
         <%= form_with(model: tweet, local: true) do |ff| %>
             <div class = "form-group">
@@ -35,5 +11,5 @@
                 <%= ff.submit nil, class: "btn btn-primary mt-2 mb-5" %>
             </div>
         <% end %>
-    </div>
-<% end %>
+</div>
+
