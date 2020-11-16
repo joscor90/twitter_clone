@@ -5,7 +5,9 @@
     </div>
 </div>
 
-<%= render 'form', tweet: @tweet %>
+<% if user_signed_in? %>
+    <%= render 'form', tweet: @tweet %>
+<% end %>
 
 
 <div class = "container">
@@ -15,6 +17,14 @@
             <div class="card-body">
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
+                <% if tweet.retweet_id %>
+                    <% ret_ref = Retweet.find_by(id: tweet.retweet_id) %>
+                    <% tweet_ref = Tweet.find_by(id: ret_ref.tweet_id) %>
+                    <div class = "card-body">
+                        <h5 class="card-title"><%= tweet_ref.user %></h5>
+                        <p class="card-text"><%= tweet_ref.content %></p>
+                    </div>
+                <% end %>
                 <span class="text-success"><%= "#{tweet.retweets.count} rts"%></span>
                 <% if user_signed_in? %> 
                     <% if tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>

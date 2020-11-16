@@ -12,7 +12,7 @@ class RetweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
-            @retweet = Retweet.create(user_id: current_user.id, tweet_id: @tweet.id)
+            @retweet = Retweet.create(user_id: current_user.id, tweet_id: params[:id])
             @retweet.save
             @tweet.retweet_id = @retweet.id 
             @tweet.save 
