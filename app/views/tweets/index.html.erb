@@ -30,16 +30,21 @@
             <div class="card-body">
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
-                <span class="text-primary"><%= tweet.retweets.count %></span>
+                <span class="text-success"><%= tweet.retweets.count %></span>
                 <% if user_signed_in? %>
                     <% if tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
                         <span class="text-primary">rtweeted</span>
                     <% else %>
-                        <%= link_to 'Retweet', retweet_path(tweet), class: "card-link" %>
+                        <%= link_to 'rt', retweet_path(tweet), class: "card-link" %>
                     <% end %>
                 <% end %>
-                <span class="text-primary"><%= tweet.likes.count %></span>
-
+                <span class="text-success"><%= tweet.likes.count %></span>
+                <% if user_signed_in? && tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
+                    <%= link_to 'Unlike', destroy_like_path(tweet), method: :delete, class: "card-link" %>
+                <% else %>
+                    <%= link_to 'Like', create_like_path(tweet), method: :post, class: "card-link" %>
+                <% end %>
+                <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
             </div>
         </div>
     <% end %>
