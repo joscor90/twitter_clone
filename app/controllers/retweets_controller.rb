@@ -13,7 +13,9 @@ class RetweetsController < ApplicationController
         @tweet.user_id = current_user.id
         if @tweet.save
             @retweet = Retweet.create(user_id: current_user.id, tweet_id: @tweet.id)
-            @retweet.save 
+            @retweet.save
+            @tweet.retweet_id = @retweet.id 
+            @tweet.save 
             redirect_to root_path, notice: "Tweet was created successfully"
         else 
             render :new, notice: "Tweet couldn't be created"
