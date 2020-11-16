@@ -30,7 +30,16 @@
             <div class="card-body">
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
+                <span class="text-primary"><%= tweet.retweets.count %></span>
+                <% if user_signed_in? %>
+                    <% if tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
+                        <span class="text-primary">rtweeted</span>
+                    <% else %>
+                        <%= link_to 'Retweet', retweet_path(tweet), class: "card-link" %>
+                    <% end %>
+                <% end %>
                 <span class="text-primary"><%= tweet.likes.count %></span>
+
             </div>
         </div>
     <% end %>
