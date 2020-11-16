@@ -6,9 +6,20 @@
 </div>
 
 <% if user_signed_in? %>
-    <h3>Wanna tweet something?</h3>
-
-    <%= render 'form', tweet: @tweet %>
+    <div class = "ml-3 w-25">
+        <h3>Share something</h3>
+        <%= form_with(model: @tweet, local: true) do |ff| %>
+            <div class = "form-group">
+                <div>
+                    <%= ff.text_area :content, class: "form-control" %>
+                </div>
+            </div>
+        
+            <div>
+                <%= ff.submit nil, class: "btn btn-primary mt-2 mb-5" %>
+            </div>
+        <% end %>
+    </div>
 <% end %>
 
 <h3>Latest tweets</h3>
