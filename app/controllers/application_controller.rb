@@ -7,5 +7,9 @@ class ApplicationController < ActionController::Base
         return @ref_tweet
     end
 
-    helper_method :search_tweet
+    def liked?(tweet)
+        tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id))
+    end
+
+    helper_method :search_tweet, :liked?
 end

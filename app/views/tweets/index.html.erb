@@ -32,7 +32,7 @@
                 <% end %>
                 <span class="text-success"><%= "#{tweet.likes.count} likes" %></span>
                 <% if user_signed_in? %>
-                    <% if tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
+                    <% if liked?(tweet) %>
                         <%= link_to '', destroy_like_path(tweet), method: :delete, class: "card-link fas fa-thumbs-up" %>
                     <% else %>
                         <%= link_to '', create_like_path(tweet), method: :post, class: "card-link far fa-thumbs-up" %>
