@@ -11,6 +11,7 @@ h1, .logo {
     font-family: 'Lobster Two', cursive;;
 }
 
+/* All this for a sticky footer */
 html, body {
     height: 100%;
     margin: 0;

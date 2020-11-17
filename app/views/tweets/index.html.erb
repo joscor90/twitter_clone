@@ -41,8 +41,10 @@
                 <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
 
                 <% if current_user && current_user.id == tweet.user_id %>
-                        <%= link_to 'Edit', edit_tweet_path(tweet), class: "text-warning mr-auto" %>
-                        <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }, class: "text-danger" %>   
+                    <span>
+                        <%= link_to 'Edit', edit_tweet_path(tweet), class: "text-warning" %>
+                        <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }, class: "text-danger" %> 
+                    </span>  
                 <% end %>
             </div>
         </div>
