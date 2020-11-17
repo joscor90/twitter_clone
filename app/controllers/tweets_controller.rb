@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
     end 
 
     def show 
-        
+        @likes = @tweet.likes
     end 
 
     def edit 
