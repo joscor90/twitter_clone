@@ -18,7 +18,7 @@
         <div class="card mb-3" style="width: 20 rem;">
             <div class="card-body">
                 <h5 class="card-title"> <%= image_tag tweet.user.image_url, size: "40", class: "avatar mr-2" %><%= tweet.user %></h5>
-                <p class="card-text"><%= tweet.content %>.</p>
+                <p class="card-text"><%= tweet.content %></p>
                 <% if tweet.retweet_id %>
                     <div class = "card card-body mb-2">
                         <h5 class="card-title"><%= image_tag search_tweet(tweet).user.image_url, size: "40", class: "avatar mr-2" %><%= search_tweet(tweet).user %></h5>
