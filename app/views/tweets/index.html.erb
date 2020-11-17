@@ -9,9 +9,6 @@
     <%= render 'form', tweet: @tweet %>
 <% end %>
 
-
-
-
 <div class = "container">
     <h3 class= "mb-4">Latest tweets</h3>
     <% @tweets.each do |tweet| %>
@@ -51,44 +48,5 @@
         </div>
     <% end %>
 </div>
-<!-- <table>
-    <thead>
-        <tr>
-            <th>Content</th>
-            <th>Author</th>
-            <th>Tweeted At</th>
-            <th>Retweets</th>
-            <th>Likes</th>
-            <th colspan='4'></th>
-        </tr>
-    </thead>
-    <tbody>
-    <% @tweets.each do |tweet| %>
-        <tr>
-            <td><%= tweet.content %></td>
-            <td><%= tweet.user %></td>
-            <td><%= link_to time_ago_in_words(tweet.created_at), tweet_path(tweet) %></td>
-            <td><%= link_to tweet.retweets.count, retweets_path(tweet) %></td>
-            <td><%= tweet.likes.count %></td>
-            <% if user_signed_in? %>
-                <% if tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
-                <td><p>Retweeted</p></td>
-                <% else %>
-                    <td><%= link_to 'Retweet', retweet_path(tweet) %></td>
-                <% end %>
-                <%if tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
-                    <td><%= link_to 'Unlike', destroy_like_path(tweet), method: :delete %></td>
-                <% else %>
-                    <td><%= link_to 'Like', create_like_path(tweet), method: :post %></td>
-                <% end %>
-            <% end %>
-            <% if current_user && current_user.id == tweet.user_id %>
-                <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-                <td><%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }%></td>
-            <% end %>
-        </tr>
-    <% end %>
-    </tbody>
-</table> -->
 
 <%= paginate @tweets %>
