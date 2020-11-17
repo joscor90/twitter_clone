@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Welcome <%= current_user ? current_user.name : "stranger" %>!</h1>
-      <p class="lead">This is definetly not Twitter!.</p>
+      <p class="lead">This is definetly not Twitter!</p>
     </div>
 </div>
 
@@ -47,6 +47,9 @@
             </div>
         </div>
     <% end %>
+    <div class='text-center'>
+        <%= link_to_next_page @tweets, 'Show more tweets' %>
+        <%= link_to_prev_page @tweets, 'Go back' %>
+    </div>
 </div>
 
-<%= paginate @tweets %>
