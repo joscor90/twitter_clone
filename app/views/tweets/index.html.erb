@@ -10,6 +10,8 @@
 <% end %>
 
 
+
+
 <div class = "container">
     <h3 class= "mb-4">Latest tweets</h3>
     <% @tweets.each do |tweet| %>
@@ -34,9 +36,9 @@
                 <span class="text-success"><%= "#{tweet.likes.count} likes" %></span>
                 <% if user_signed_in? %>
                     <% if tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
-                        <%= link_to 'Unlike', destroy_like_path(tweet), method: :delete, class: "card-link" %>
+                        <%= link_to '', destroy_like_path(tweet), method: :delete, class: "card-link fas fa-thumbs-up" %>
                     <% else %>
-                        <%= link_to 'Like', create_like_path(tweet), method: :post, class: "card-link" %>
+                        <%= link_to '', create_like_path(tweet), method: :post, class: "card-link far fa-thumbs-up" %>
                     <% end %>
                 <% end %>
                 <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
