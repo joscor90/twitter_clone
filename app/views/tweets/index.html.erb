@@ -18,11 +18,9 @@
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
                 <% if tweet.retweet_id %>
-                    <% ret_ref = Retweet.find_by(id: tweet.retweet_id) %>
-                    <% tweet_ref = Tweet.find_by(id: ret_ref.tweet_id) %>
                     <div class = "card-body">
-                        <h5 class="card-title"><%= tweet_ref.user %></h5>
-                        <p class="card-text"><%= tweet_ref.content %></p>
+                        <h5 class="card-title"><%= search_tweet(tweet).user %></h5>
+                        <p class="card-text"><%= search_tweet(tweet).content %></p>
                     </div>
                 <% end %>
                 <span class="text-success"><%= "#{tweet.retweets.count} rts"%></span>
