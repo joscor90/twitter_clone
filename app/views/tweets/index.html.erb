@@ -20,7 +20,7 @@
                 <h5 class="card-title"><%= tweet.user %></h5>
                 <p class="card-text"><%= tweet.content %>.</p>
                 <% if tweet.retweet_id %>
-                    <div class = "card-body">
+                    <div class = "card card-body mb-2">
                         <h5 class="card-title"><%= search_tweet(tweet).user %></h5>
                         <p class="card-text"><%= search_tweet(tweet).content %></p>
                     </div>
