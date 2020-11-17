@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
         tweet.likes.include?(Like.find_by(user_id: current_user.id, tweet_id: tweet.id))
     end
 
-    helper_method :search_tweet, :liked?
+    def retweeted?(tweet)
+        tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) 
+    end
+
+    helper_method :search_tweet, :liked?, :retweeted?
 end

@@ -24,7 +24,7 @@
                 <% end %>
                 <span class="text-success"><%= "#{tweet.retweets.count} rts"%></span>
                 <% if user_signed_in? %> 
-                    <% if tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) %>
+                    <% if retweeted?(tweet)%>
                         <span class="text-primary">rtweeted</span>
                     <% else %>
                         <%= link_to 'rt', retweet_path(tweet.id), class: "card-link" %>
