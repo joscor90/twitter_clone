@@ -50,5 +50,5 @@ After successfully cloning this repository you should do the following
 
 3. After this run the command: *rails s* to start the server.
 
-4. Finally use your browser and go to *http://localhost:3000*, you should now be able to use the app. If you want to start tweeting right away then log in with the credentials of the dummy account following de *Log In* link in the navigation bar. If instead you want to create your own account follow the *Sign Up* link in the navigation bar.
+4. Finally use your browser and go to *http://localhost:3000*, you should now be able to use the app. If you want to start tweeting right away then log in with the credentials of the dummy account (check *seed.rb* for details) following de *Log In* link in the navigation bar. If instead you want to create your own account follow the *Sign Up* link in the navigation bar.
 
