@@ -41,19 +41,13 @@
                 <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
 
                 <% if current_user && current_user.id == tweet.user_id %>
-<<<<<<< HEAD
-                    <span>
                         <%= link_to 'Edit', edit_tweet_path(tweet), class: "text-warning" %>
                         <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }, class: "text-danger" %> 
-                    </span>  
-=======
-                    <%= link_to 'Edit', edit_tweet_path(tweet), class: "text-warning mr-auto" %>
-                    <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }, class: "text-danger" %>   
->>>>>>> ec3a6ba5cec2bda88ee9607fc70c7c4fe10c5052
                 <% end %>
             </div>
         </div>
     <% end %>
+    
     <div class='text-center mb-4 more'>
         <%= link_to_next_page @tweets, 'Show more tweets' %>
         <%= link_to_prev_page @tweets, 'Go back' %>
