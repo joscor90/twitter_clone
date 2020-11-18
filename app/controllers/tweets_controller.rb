@@ -4,8 +4,8 @@ class TweetsController < ApplicationController
 
     attr_reader :ref_tweet
 
-    def search_tweet(t)
-        ref_retweet = Retweet.find_by(id: t.retweet_id)
+    def search_tweet(tweet)
+        ref_retweet = Retweet.find_by(id: tweet.retweet_id)
         @ref_tweet = Tweet.find_by(id: ref_retweet.tweet_id)
         return @ref_tweet
     end

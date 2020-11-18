@@ -1,13 +1,13 @@
 <div class="container">
     <div class="card mb-5" style="width: 20rem;">
         <div class="card-body">
-          <h5 class="card-title"><%= image_tag @tweet.user.image_url, size: "40", class: "avatar mr-2" %> <%= @tweet.user %></h5>
+          <h5 class="card-title"><%= image_tag @tweet.user_image_url, size: "40", class: "avatar mr-2" %> <%= @tweet.user %></h5>
           <p class="card-text"><%= @tweet.content %></p>
         </div>
     </div>
     <h3>Liked by</h3>
     <% @likes.each do |like| %>
-        <p><%= image_tag like.user.image_url, size: "40", class: "avatar mr-2" %><%= like.user %> liked this</p>
+        <p><%= image_tag like.user_image_url, size: "40", class: "avatar mr-2" %><%= like.user %> liked this</p>
     <% end %>
 <%= link_to 'Back to Home', tweets_path %>
 </div>
