@@ -28,9 +28,14 @@ Besides the default Gems that comes with a Rails project the following gems were
 
 + *rails-erd* 1.6.0 for ERD generation.
 
-## CSS Framework
+## CSS Framework, Fonts and Icons
 
-The style in *Definetly not Twitter* was made using *Bootstrap 4.5.3*.
+The style in *Definetly not Twitter* was made using *Bootstrap 4.5.3*. Two special fonts were used in this project, both collected from *Google Fonts*:
+
++ Fredoka One
++ Lobster Two
+
+The thumb up icons (blank and fill) for the like feature were obtained from  *Font Awesome*.
 
 ## Model
 
