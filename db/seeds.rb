@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#Dummy account
+
+User.create(name: 'Dummy', email: 'dummy@mail.com', password: '123456', image_url: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Gliederpuppe.png')

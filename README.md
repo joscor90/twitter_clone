@@ -40,3 +40,15 @@ The style in *Definetly not Twitter* was made using *Bootstrap 4.5.3*.
     </embed>
 </object>
 
+## Instructions for Use
+
+After successfully cloning this repository you should do the following
+
+1. Open the project in your terminal and run the command: *bundle install* this will install and/or update the gems that this project needs to work.
+
+2. Next run the following command: *rails db:setup* this will create the database, run the necessary migrations for the app to work and create a dummy account for you to use in the app.
+
+3. After this run the command: *rails s* to start the server.
+
+4. Finally use your browser and go to *http://localhost:3000*, you should now be able to use the app. If you want to start tweeting right away then log in with the credentials of the dummy account following de *Log In* link in the navigation bar. If instead you want to create your own account follow the *Sign Up* link in the navigation bar.
+
