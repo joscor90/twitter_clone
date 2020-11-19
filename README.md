@@ -2,13 +2,13 @@
 
 ## Summary
 
-*Definetly not Twitter* is a Twitter like app where you can share your thoughts with other people and see what they think too about stuff. This app was developed mostly using Rails.
+*Definetly not Twitter* is a Twitter like app where you can share your thoughts with other people and see what they think about stuff too. This app was developed mostly using Rails.
 
 ## Features
 
 *Definetly not Twitter* has the following features:
 
-+ Authentication: you can create your own account using the sign up link in the navigation bar, you will be asked to provided a user name, email, password and a url to your avatar. After signing up you will be automatically logged in and while you are you can make your own tweets and like or retweet others.
++ Authentication: you can create your own account using the sign up link in the navigation bar, you will be asked to provided a user name, email, password and a url for your avatar. After signing up you will be automatically logged in and while you are you can make your own tweets and like or retweet others.
 
 + Retweet: you can retweet a tweet that has caught your attention. This will create a new tweet and show the tweet you are referencing to.
 
@@ -49,7 +49,7 @@ The thumb up icons (blank and fill) for the like feature were obtained from  *Fo
 
 After successfully cloning this repository you should do the following
 
-1. Open the project in your terminal and run the command: *bundle install* this will install and/or update the gems that this project needs to work.
+1. Open the project in your terminal and run the command: *bundle install* this will install and/or update the gems that this project needs to work. **Remember that your Ruby and RoR versions should match the ones described in the Gemfile**.
 
 2. Next run the following command: *rails db:setup* this will create the database, run the necessary migrations for the app to work and create a dummy account for you to use in the app.
 
