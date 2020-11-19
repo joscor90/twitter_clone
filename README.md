@@ -49,7 +49,7 @@ The thumb up icons (blank and fill) for the like feature were obtained from  *Fo
 
 After successfully cloning this repository you should do the following
 
-1. Open the project in your terminal and run the command: *bundle install* this will install and/or update the gems that this project needs to work.
+1. Open the project in your terminal and run the command: *bundle install* this will install and/or update the gems that this project needs to work. **Remember that your Ruby and RoR versions should match the ones described in the Gemfile**.
 
 2. Next run the following command: *rails db:setup* this will create the database, run the necessary migrations for the app to work and create a dummy account for you to use in the app.
 
