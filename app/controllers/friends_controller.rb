@@ -1,10 +1,10 @@
 class FriendsController < ApplicationController
     def create 
-        followed_user = params.require(:user_id)
-        followed_user_name = User.find_by(id: followed_user)
-        @friend = Friend.create(user_id: followed_user, friend_id: current_user.id)
+        friend_id = params.require(:user_id)
+        user_to_be_friend = User.find_by(id: followed_user)
+        @friend = Friend.create(user_id: current_user.id, friend_id: user_to_be_friend.id)
         if @friend.save
-            redirect_to root_path, notice: "You are know following #{followed_user_name}"
+            redirect_to root_path, notice: "#{user_to_be_friend.name} is your friend!"
         end
     end
 end
