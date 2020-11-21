@@ -1,5 +1,4 @@
 class FriendsController < ApplicationController
-
     def create 
         followed_user = params.require(:user_id)
         followed_user_name = User.find_by(id: followed_user)
