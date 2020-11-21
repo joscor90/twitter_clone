@@ -38,8 +38,9 @@
                         <%= link_to '', create_like_path(tweet), method: :post, class: "card-link far fa-thumbs-up" %>
                     <% end %>
                 <% end %>
+
                 <% if user_signed_in? %> 
-                    <% if followed?(tweet)%>
+                    <% if followed?(tweet.user_id)%>
                         <span class=text-primary>followed</span>
                     <% else %>
                         <%= link_to 'Follow', create_friend_path(tweet.user_id), method: :post %>
