@@ -11,7 +11,8 @@ class TweetsController < ApplicationController
     end
 
     def followed?(tweet)
-        current_user.friends.include?(Friend.find_by(friend_id: tweet.user_id))
+        followed_user = User.find_by(id: tweet.user_id)
+        followed_user.friends.include?(friend_id: current_user.id)
     end
 
     def liked?(tweet)
