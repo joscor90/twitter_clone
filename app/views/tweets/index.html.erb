@@ -38,12 +38,14 @@
                         <%= link_to '', create_like_path(tweet), method: :post, class: "card-link far fa-thumbs-up" %>
                     <% end %>
                 <% end %>
-                <% if user_signed_in? && followed?(tweet)%>
-                    <span class=text-primary>followed</span>
-                <% else %>
-                    <%= link_to 'Follow', create_friend_path(tweet.user_id), method: :post %>
+                <% if user_signed_in? %> 
+                    <% if followed?(tweet)%>
+                        <span class=text-primary>followed</span>
+                    <% else %>
+                        <%= link_to 'Follow', create_friend_path(tweet.user_id), method: :post %>
+                    <% end %>
                 <% end %>
-                
+
                 <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
 
                 <% if current_user && current_user.id == tweet.user_id %>
