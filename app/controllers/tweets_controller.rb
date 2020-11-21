@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
         tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) 
     end
 
-    helper_method :search_tweet, :liked?, :retweeted?, :followed?
+    helper_method :search_tweet, :liked?, :retweeted?, :friend?
 
     def index 
         @tweet = Tweet.new
