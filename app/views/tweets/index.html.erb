@@ -40,10 +40,10 @@
                 <% end %>
 
                 <% if user_signed_in? %> 
-                    <% if followed?(tweet.user_id)%>
-                        <span class=text-primary>followed</span>
+                    <% if friend?(tweet.user_id)%>
+                        <span class=text-primary>Befriended</span>
                     <% else %>
-                        <%= link_to 'Follow', create_friend_path(tweet.user_id), method: :post %>
+                        <%= link_to 'Befriend', create_friend_path(tweet.user_id), method: :post %>
                     <% end %>
                 <% end %>
 
