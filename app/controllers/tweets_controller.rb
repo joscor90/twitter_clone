@@ -27,7 +27,7 @@ class TweetsController < ApplicationController
 
     def index 
         @tweet = Tweet.new
-        @tweets = Tweet.order("created_at DESC").page(params[:page])
+        @tweets = Tweet.tweets_for_me.order("created_at DESC").page(params[:page])
     end 
 
     def new

@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   #Aqui va el scope
-  scope :tweets_for_me, -> { where('user_id == ?', current_user.friends.pluck(:friend_id) }
+  scope :tweets_for_me, -> { where(current_user.friends.plick(:friend_id).includes(:user_id)) }
 
   belongs_to :user
   has_many :retweets
