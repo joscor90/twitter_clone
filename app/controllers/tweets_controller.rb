@@ -27,7 +27,8 @@ class TweetsController < ApplicationController
 
     def index 
         @tweet = Tweet.new
-        @tweets = Tweet.tweets_for_me.order("created_at DESC").page(params[:page])
+        frens = current_user.friends.pluck(:friend_id)
+        @tweets = Tweet.tweets_for_me(frens).order("created_at DESC").page(params[:page])
     end 
 
     def new
