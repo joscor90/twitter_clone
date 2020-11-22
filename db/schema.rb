@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_22_142852) do
+ActiveRecord::Schema.define(version: 2020_11_22_171238) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_11_22_142852) do
     t.integer "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "friend_id"], name: "index_friends_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
