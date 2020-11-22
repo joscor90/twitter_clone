@@ -37,6 +37,8 @@ class TweetsController < ApplicationController
         else 
             @tweets = Tweet.order("created_at DESC").page(params[:page])
         end
+        @q = Tweet.ransack(params[:q])
+        @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page])
     end 
 
     def new
