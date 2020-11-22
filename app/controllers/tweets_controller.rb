@@ -25,7 +25,9 @@ class TweetsController < ApplicationController
 
     helper_method :search_tweet, :liked?, :retweeted?, :friend?
 
-    def index 
+    def index
+        @q = Person.ransack(params[:q])
+        @people = @q.result(distinct: true) 
         @tweet = Tweet.new
         if user_signed_in?
             frens = current_user.friends.pluck(:friend_id)
