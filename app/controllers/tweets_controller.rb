@@ -26,19 +26,18 @@ class TweetsController < ApplicationController
     helper_method :search_tweet, :liked?, :retweeted?, :friend?
 
     def index
+        @q = Tweet.ransack(params[:q])
         if user_signed_in?
             @tweet = Tweet.new
             frens = current_user.friends.pluck(:friend_id)
             if frens.empty?
-                @tweets = Tweet.order("created_at DESC").page(params[:page])
+                @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page])
             else 
-                @tweets = Tweet.tweets_for_me(frens).order("created_at DESC").page(params[:page]) 
+                @tweets = @q.result(distinct: true).tweets_for_me(frens).order("created_at DESC").page(params[:page])
             end
         else 
-            @tweets = Tweet.order("created_at DESC").page(params[:page])
+            @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page])
         end
-        @q = Tweet.ransack(params[:q])
-        @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page])
     end 
 
     def new
