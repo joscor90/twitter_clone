@@ -7,4 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Dummy account
-User.create(name: 'Dummy', email: 'dummy@mail.com', password: '123456', image_url: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Gliederpuppe.png')AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+User.create(name: 'Dummy', email: 'dummy@mail.com', password: '123456', image_url: 'https://upload.wikimedia.org/wikipedia/commons/f/f5/Gliederpuppe.png') if Rails.env.production?
+
+#Admin account
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
