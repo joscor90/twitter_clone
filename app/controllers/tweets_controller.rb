@@ -26,10 +26,8 @@ class TweetsController < ApplicationController
     helper_method :search_tweet, :liked?, :retweeted?, :friend?
 
     def index
-        @q = Person.ransack(params[:q])
-        @people = @q.result(distinct: true) 
-        @tweet = Tweet.new
         if user_signed_in?
+            @tweet = Tweet.new
             frens = current_user.friends.pluck(:friend_id)
             if frens.empty?
                 @tweets = Tweet.order("created_at DESC").page(params[:page])
@@ -49,8 +47,6 @@ class TweetsController < ApplicationController
         @tweet = Tweet.create(tweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
-            @retweet ||= Retweet.create(retweet_params)
-            @retweet.save if @retweet.present?
             redirect_to tweets_path, notice: 'Tweet was created successfully'
         else 
             render :new 
