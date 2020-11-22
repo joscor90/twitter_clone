@@ -32,5 +32,6 @@ ActiveAdmin.register User do
     column :friends do |user|
       user.friends.all.count
     end
+    actions
   end
 end
