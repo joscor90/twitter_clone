@@ -40,6 +40,26 @@ class TweetsController < ApplicationController
         end
     end 
 
+    def hashtag_filter(content)
+        content_arr = content.split(" ")
+        new_content_arr = content_arr.map do |w|
+            if w[0] == "#"
+                if (/\W/).match(w[-1])  
+                    w_arr = w.split("")
+                    w_arr = w.split("")
+                    del_char = w_arr.pop
+                    w = w.delete(w[-1]) 
+                    w = "<%= link_to "+w+" %>"+del_char
+                else 
+                    w = "<%= link_to "+w+" %>"
+                end
+            else
+                w 
+            end
+        end
+        return new_content_arr.join(" ")
+    end
+
     def new
         @tweet = Tweet.new
     end 
