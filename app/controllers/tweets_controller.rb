@@ -23,7 +23,27 @@ class TweetsController < ApplicationController
         tweet.retweets.include?(Retweet.find_by(user_id: current_user.id, tweet_id: tweet.id)) 
     end
 
-    helper_method :search_tweet, :liked?, :retweeted?, :friend?
+    def hashtag_filter(content)
+        content_arr = content.split(" ")
+        new_content_arr = content_arr.map do |w|
+            if w[0] == "#"
+                if (/\W/).match(w[-1])  
+                    w_arr = w.split("")
+                    w_arr = w.split("")
+                    del_char = w_arr.pop
+                    w = w.delete(w[-1]) 
+                    w = "<a href=\"/hashtag/#{w}\"> "+w+" </a>"+del_char
+                else 
+                    w = "<a href=\"/hashtag/#{w}\"> "+w+" </a>"
+                end
+            else
+                w 
+            end
+        end
+        return (new_content_arr.join(" ")).html_safe
+    end
+
+    helper_method :search_tweet, :liked?, :retweeted?, :friend?, :hashtag_filter
 
     def index
         @q = Tweet.ransack(params[:q])
@@ -39,26 +59,6 @@ class TweetsController < ApplicationController
             @tweets = @q.result(distinct: true).order("created_at DESC").page(params[:page])
         end
     end 
-
-    def hashtag_filter(content)
-        content_arr = content.split(" ")
-        new_content_arr = content_arr.map do |w|
-            if w[0] == "#"
-                if (/\W/).match(w[-1])  
-                    w_arr = w.split("")
-                    w_arr = w.split("")
-                    del_char = w_arr.pop
-                    w = w.delete(w[-1]) 
-                    w = "<%= link_to "+w+" %>"+del_char
-                else 
-                    w = "<%= link_to "+w+" %>"
-                end
-            else
-                w 
-            end
-        end
-        return new_content_arr.join(" ")
-    end
 
     def new
         @tweet = Tweet.new

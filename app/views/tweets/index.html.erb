@@ -18,16 +18,17 @@
     <%= f.submit %>
     
 <% end %>
+
     <h3 class= "my-4">Latest tweets</h3>
     <% @tweets.each do |tweet| %>
         <div class="card mb-3" style="width: 20 rem;">
             <div class="card-body">
                 <h5 class="card-title"> <%= image_tag tweet.user_image_url, size: "40", class: "avatar mr-2" %><%= tweet.user %></h5>
-                <p class="card-text"><%= tweet.content %></p>
+                <p class="card-text"><%= hashtag_filter(tweet.content) %></p>
                 <% if tweet.retweet_id %>
                     <div class = "card card-body mb-2">
                         <h5 class="card-title"><%= image_tag search_tweet(tweet).user_image_url, size: "40", class: "avatar mr-2" %><%= search_tweet(tweet).user %></h5>
-                        <p class="card-text"><%= search_tweet(tweet).content %></p>
+                        <p class="card-text"><%= hashtag_filter(search_tweet(tweet).content) %></p>
                     </div>
                 <% end %>
                 <span class="text-success"><%= "#{tweet.retweets.count} rts"%></span>
