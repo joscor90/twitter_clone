@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', sessions: 'users/sessions'}
   root 'tweets#index'
   resources :tweets
-  get "hashtags/:hashtag", to: "hashtag#index", as: "hashtag"
+  get "hashtags/:hashtag", to: "tweets#hashtags", as: "hashtag"
 
   post 'friend/:user_id', to: 'friends#create', as: 'create_friend'
   post 'retweet/:id', to: "retweets#create", as: "create_retweet"

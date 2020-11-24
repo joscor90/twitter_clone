@@ -32,9 +32,9 @@ class TweetsController < ApplicationController
                     w_arr = w.split("")
                     del_char = w_arr.pop
                     w = w.delete(w[-1]) 
-                    w = "<a href=\"/hashtag/#{w}\"> "+w+" </a>"+del_char
+                    w = "<a href=\"/hashtags/#{w.delete(w[0])}\"> "+w+" </a>"+del_char
                 else 
-                    w = "<a href=\"/hashtag/#{w}\"> "+w+" </a>"
+                    w = "<a href=\"/hashtags/#{w.delete(w[0])}\"> "+w+" </a>"
                 end
             else
                 w 
@@ -44,6 +44,14 @@ class TweetsController < ApplicationController
     end
 
     helper_method :search_tweet, :liked?, :retweeted?, :friend?, :hashtag_filter
+
+    def hashtags 
+        hashtag = params.require(:hashtag)
+        hashtag = "##{hashtag}"
+        @hastag_tweets = []
+        tweets = Tweet.all 
+        tweets.each do 
+    end
 
     def index
         @q = Tweet.ransack(params[:q])
