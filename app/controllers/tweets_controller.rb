@@ -27,15 +27,7 @@ class TweetsController < ApplicationController
         content_arr = content.split(" ")
         new_content_arr = content_arr.map do |w|
             if w[0] == "#"
-                if (/\W/).match(w[-1])  
-                    w_arr = w.split("")
-                    w_arr = w.split("")
-                    del_char = w_arr.pop
-                    w = w.delete(w[-1]) 
-                    w = "<a href=\"/hashtags/#{w.delete(w[0])}\"> "+w+" </a>"+del_char
-                else 
-                    w = "<a href=\"/hashtags/#{w.delete(w[0])}\"> "+w+" </a>"
-                end
+                w = "<a href=\"/hashtags/#{w.delete(w[0])}\"> "+w+" </a>"
             else
                 w 
             end
@@ -47,16 +39,20 @@ class TweetsController < ApplicationController
 
     def hashtags 
         hashtag = params.require(:hashtag)
-        @hashtag = "##{hashtag}"
+        @hashtag = "#{hashtag.gsub(/\W/,"")}"
         @hashtag_tweets = []
         tweets = Tweet.all
         tweets.each do |tweet|
-            tweet_arr = tweet.content.split(" ")
-            if tweet_arr.include?(@hashtag)
-                @hashtag_tweets.push(tweet)
+            content_arr  = tweet.content.split(" ")
+            content_arr.each do |w| 
+                if w[0] == "#"
+                    if w.gsub(/\W/, "") == @hashtag
+                        @hashtag_tweets.push(tweet)
+                    end
+                end
             end
+
         end
-        @hashtag_tweets
     end
 
     def index
