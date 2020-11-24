@@ -47,10 +47,16 @@ class TweetsController < ApplicationController
 
     def hashtags 
         hashtag = params.require(:hashtag)
-        hashtag = "##{hashtag}"
-        @hastag_tweets = []
-        tweets = Tweet.all 
-        tweets.each do 
+        @hashtag = "##{hashtag}"
+        @hashtag_tweets = []
+        tweets = Tweet.all
+        tweets.each do |tweet|
+            tweet_arr = tweet.content.split(" ")
+            if tweet_arr.include?(@hashtag)
+                @hashtag_tweets.push(tweet)
+            end
+        end
+        @hashtag_tweets
     end
 
     def index
