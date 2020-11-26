@@ -28,6 +28,10 @@ Besides the default Gems that comes with a Rails project the following gems were
 
 + *rails-erd* 1.6.0 for ERD generation.
 
++ *ransack* 2.3.2 for the search bar.
+
++ *activeadmin* 2.8.1 for the admin control panel.
+
 ## CSS Framework, Fonts and Icons
 
 The style in *Definetly not Twitter* was made using *Bootstrap 4.5.3*. Two special fonts were used in this project, both collected from *Google Fonts*:
