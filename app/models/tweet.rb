@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   #Aqui va el scope
-  scope :tweets_for_me, ->(friend_list) { where(:user_id => friend_list) }
+  scope :tweets_for_me, ->(friend_list, current_user_id) { where(:user_id => (friend_list).push(current_user_id)) }
 
   belongs_to :user
   has_many :retweets

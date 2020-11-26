@@ -4,6 +4,12 @@
           <h5 class="card-title"><%= image_tag @tweet.user_image_url, size: "40", class: "avatar mr-2" %> <%= @tweet.user %></h5>
           <p class="card-text"><%= @tweet.content %></p>
         </div>
+        <% if @tweet.retweet_id %>
+        <div class = "card card-body mb-2">
+            <h5 class="card-title"><%= image_tag search_tweet(@tweet).user_image_url, size: "40", class: "avatar mr-2" %><%= search_tweet(@tweet).user %></h5>
+            <p class="card-text"><%= hashtag_filter(search_tweet(@tweet).content) %></p>
+        </div>
+    <% end %>
     </div>
     <h3>Liked by</h3>
     <% @likes.each do |like| %>
