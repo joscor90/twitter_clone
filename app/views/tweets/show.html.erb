@@ -1,5 +1,9 @@
 <div class="container">
     <%= render 'tweet', tweet: @tweet %>
+    <h3 class = "my-4">Liked by</h3>
+    <% @likes.each do |like| %>
+        <p class="mb-4"><%= image_tag like.user_image_url, size: "40", class: "avatar mr-2" %><%= like.user %> liked this</p>
+    <% end %>
     <%= link_to 'Back to Home', tweets_path %>
 </div>
 
