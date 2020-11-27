@@ -9,7 +9,7 @@ class RetweetsController < ApplicationController
     end
 
     def create
-        @tweet = Tweet.create(tweet_params)
+        @tweet = Tweet.create(retweet_params)
         @tweet.user_id = current_user.id
         if @tweet.save
             @retweet = Retweet.create(user_id: current_user.id, tweet_id: params[:id])
@@ -22,7 +22,7 @@ class RetweetsController < ApplicationController
         end
     end
 
-    def tweet_params 
+    def retweet_params 
         params.require(:retweet).permit(:content)
     end
 end
