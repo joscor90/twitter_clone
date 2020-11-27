@@ -1,0 +1,43 @@
+<div class="card mb-3" style="width: 20 rem;">
+    <div class="card-body">
+        <h5 class="card-title"> <%= image_tag tweet.user_image_url, size: "40", class: "avatar mr-2" %><%= tweet.user %></h5>
+        <p class="card-text"><%= hashtag_filter(tweet.content) %></p>
+        <% if tweet.retweet_id %>
+            <div class = "card card-body mb-2">
+                <h5 class="card-title"><%= image_tag search_tweet(tweet).user_image_url, size: "40", class: "avatar mr-2" %><%= search_tweet(tweet).user %></h5>
+                <p class="card-text"><%= hashtag_filter(search_tweet(tweet).content) %></p>
+            </div>
+        <% end %>
+        <span class="text-success"><%= "#{tweet.retweets.count} rts"%></span>
+        <% if user_signed_in? %> 
+            <% if retweeted?(tweet)%>
+                <span class="text-primary">rtweeted</span>
+            <% else %>
+                <%= link_to 'rt', retweet_path(tweet.id), class: "card-link" %>
+            <% end %>
+        <% end %>
+        <span class="text-success"><%= "#{tweet.likes.count} likes" %></span>
+        <% if user_signed_in? %>
+            <% if liked?(tweet) %>
+                <%= link_to '', destroy_like_path(tweet), method: :delete, class: "card-link fas fa-thumbs-up" %>
+            <% else %>
+                <%= link_to '', create_like_path(tweet), method: :post, class: "card-link far fa-thumbs-up" %>
+            <% end %>
+        <% end %>
+
+        <% if user_signed_in? %> 
+            <% if friend?(tweet.user_id)%>
+                <span class=text-primary>Befriended</span>
+            <% else %>
+                <%= link_to 'Befriend', create_friend_path(tweet.user_id), method: :post %>
+            <% end %>
+        <% end %>
+
+        <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet_path(tweet) %>
+
+        <% if current_user && current_user.id == tweet.user_id %>
+                <%= link_to 'Edit', edit_tweet_path(tweet), class: "text-warning" %>
+                <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure you want to delete your tweet?' }, class: "text-danger" %> 
+        <% end %>
+    </div>
+</div>
