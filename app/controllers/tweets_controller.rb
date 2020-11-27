@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :hashtags]
     before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
     def hashtags 
@@ -75,9 +75,5 @@ class TweetsController < ApplicationController
 
     def tweet_params 
         params.require(:tweet).permit(:content, :user_id)
-    end
-
-    def retweet_params 
-        params.require(:tweet).permit(:user_id, :tweet_id)
     end
 end
