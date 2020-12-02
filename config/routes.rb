@@ -13,5 +13,13 @@ Rails.application.routes.draw do
   post 'like/:id', to: "likes#create", as: "create_like"
   get 'retweets/:id', to: 'retweets#index', as: 'retweets'
   get 'retweet/:id', to: 'retweets#new', as: 'retweet'
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do 
+        get 'news', to: 'atweets#news'
+        get ':fecha1/:fecha2', to: "atweets#by_date"
+        post 'create_tweet', to: "atweets#create"
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
