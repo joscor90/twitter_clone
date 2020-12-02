@@ -63,4 +63,4 @@ After successfully cloning this repository you should do the following
 
 ## Heroku
 
-Follow this link to see the app in action: <a href="https://tranquil-depths-31831.herokuapp.com/" target="_blank">Definetly not Twitter</a>
+Follow this link to see the app in action: <a href="https://mysterious-scrubland-36714.herokuapp.com/" target="_blank">Definetly not Twitter</a>
